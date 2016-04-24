@@ -7,7 +7,7 @@ def hello_world():
     return redirect("/blog/meituan")
 
 @app.route('/menu')
-def hello_world():
+def menu():
     return ["meituan", "taobao"]
 
 @app.route('/blog/<blog_type>')

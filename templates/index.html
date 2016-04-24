@@ -1,14 +1,41 @@
-<html>
-<body>
-{% for data in datas %}
+{% extends "layout.html" %}
+<script style="css">
+.td(word-break: break-all; word-wrap:break-word;)
+</script>
+{% block content %}
+<table name="blog" id="blog" class="text-center">
+    <thead>
+    <tr>
+        <th>日期 </th>
+        <th> 作者 </th>
+        <th> 分类 </th>
+        <th> 标题 </th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for data in datas %}
+    <tr>
+        <td>
+            {{data["date"]}}
+        </td>
+        <td>
+            {{data["author"]}}
+        </td>
+        <td>
+            {{data["category"]}}
+        </td>
+        <td>
+            <a href="{{data['href']}}" target="_blank">{{data["title"]}}</a>
+        </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+<script>
+   $('#blog').DataTable({ });
+</script>
 
-{{data['date']}} {{data['author']}} {{data["category"]}}
-    <a href="{{data['href']}}">
-        {{data["title"]}}
-		</a><br>
-{% if loop.index % 4==0 %}
-<br>
-{% endif %}
-{% endfor %}
-</body>
-</html>
+
+{% endblock %}
+
+
